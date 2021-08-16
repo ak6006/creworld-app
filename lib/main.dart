@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 // import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 
-
 const kAndroidUserAgent =
     'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Mobile Safari/537.36';
 
@@ -31,7 +30,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: false,
       title: 'Flutter WebView Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -41,7 +40,7 @@ class MyApp extends StatelessWidget {
         '/widget': (_) {
           return WebviewScaffold(
             url: selectedUrl,
-           // javascriptChannels: jsChannels,
+            // javascriptChannels: jsChannels,
             //mediaPlaybackRequiresUserGesture: false,
             appBar: AppBar(
               title: const Text('Widget WebView'),
@@ -128,7 +127,6 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     super.initState();
 
-
     flutterWebViewPlugin.close();
 
     _urlCtrl.addListener(() {
@@ -197,9 +195,8 @@ class _MyHomePageState extends State<MyHomePage> {
         });
       }
     });
-    
 
-        //   flutterWebViewPlugin.launch(selectedUrl,appCacheEnabled: true);
+    //   flutterWebViewPlugin.launch(selectedUrl,appCacheEnabled: true);
   }
 
   @override
@@ -220,36 +217,51 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-     final flutterWebViewPlugin = FlutterWebviewPlugin();
-    return
-    Scaffold(
-       key: _scaffoldKey,
+    final flutterWebViewPlugin = FlutterWebviewPlugin();
+    return Scaffold(
+      key: _scaffoldKey,
       body: new WebviewScaffold(
-            url: "https://portal.crewsa.net/",
-            // bottomNavigationBar: ,
-            appBar: new AppBar(
-              backgroundColor: Color.fromRGBO(255,255,0,1),//(38, 38, 38, 0.4),
-              title: new Text("CreWorld",style: TextStyle(color: Colors.black),),actions: [IconButton(
-                      icon: const Icon(Icons.arrow_back_ios,color: Colors.black,),
-                      onPressed: () {
-                        flutterWebViewPlugin.goBack();
-                      },
-                    ),
-                    IconButton(
-                      icon: const Icon(Icons.arrow_forward_ios,color: Colors.black,),
-                      onPressed: () {
-                        flutterWebViewPlugin.goForward();
-                      },
-                    ),
-                    IconButton(
-                      icon: const Icon(Icons.home,color: Colors.black,),
-                      onPressed: () {
-                        flutterWebViewPlugin.reloadUrl('https://portal.crewsa.net/public/home');
-                      },
-                    ),
-                    ],
-            ),
+        appCacheEnabled: true,
+        url: "https://portal.crewsa.net/",
+        // bottomNavigationBar: ,
+        appBar: new AppBar(
+          backgroundColor: Color.fromRGBO(255, 255, 0, 1), //(38, 38, 38, 0.4),
+          title: new Text(
+            "CreWorld",
+            style: TextStyle(color: Colors.black),
           ),
+          actions: [
+            IconButton(
+              icon: const Icon(
+                Icons.arrow_back_ios,
+                color: Colors.black,
+              ),
+              onPressed: () {
+                flutterWebViewPlugin.goBack();
+              },
+            ),
+            IconButton(
+              icon: const Icon(
+                Icons.arrow_forward_ios,
+                color: Colors.black,
+              ),
+              onPressed: () {
+                flutterWebViewPlugin.goForward();
+              },
+            ),
+            IconButton(
+              icon: const Icon(
+                Icons.home,
+                color: Colors.black,
+              ),
+              onPressed: () {
+                flutterWebViewPlugin
+                    .reloadUrl('https://portal.crewsa.net/public/home');
+              },
+            ),
+          ],
+        ),
+      ),
     );
     //  Scaffold(
     //   key: _scaffoldKey,
