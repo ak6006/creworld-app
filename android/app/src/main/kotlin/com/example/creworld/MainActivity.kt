@@ -1,4 +1,4 @@
-package com.example.creworld
+package crew.net.creworld
 
 import io.flutter.embedding.android.FlutterActivity
 
